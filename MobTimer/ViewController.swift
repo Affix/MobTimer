@@ -15,6 +15,16 @@ class ViewController: NSViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    /*
+    override func viewDidAppear() {
+        let presOptions: NSApplicationPresentationOptions = ([.fullScreen,.autoHideMenuBar])
+        let optionsDictionary = [NSFullScreenModeApplicationPresentationOptions :
+            NSNumber(value: presOptions.rawValue)]
+        
+        self.view.enterFullScreenMode(NSScreen.main()!, withOptions:optionsDictionary)
+        self.view.wantsLayer = true
+    }*/
 
     override var representedObject: Any? {
         didSet {
