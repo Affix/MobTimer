@@ -9,17 +9,14 @@
 import Cocoa
 import AVFoundation
 
-class Global {
-    var nextMobber = String()
-}
 
 class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate {
     
-    let global = Global()
     var timer = Timer()
     var mobberArray: NSMutableArray = []
     var counter = 0
     var player: AVAudioPlayer?
+    var nextMobber = String()
     
     var state = 0
     
@@ -56,9 +53,10 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
     }
     
     
-    
-    func performSegue(for segue: NSStoryboardSegue, withIdentifier identifier: String, sender: AnyObject?) {
-        segue.perform()
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        let fullScreenVC = segue.destinationController as! FullScreenViewController
+        let nm = sender as! String
+        fullScreenVC.nextMobber = nm
     }
 
     @IBAction func addMobber(_ sender: Any) {
@@ -93,9 +91,9 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         if counter >= mobberArray.count {
             counter = 0
         }
-        performSegue(withIdentifier: "fullScreenSegue", sender: nil)
-        global.nextMobber = (self.mobberArray.object(at: counter) as? String)!
-        statusLabel.stringValue = "Next Mobber: \(global.nextMobber)"
+        nextMobber = (self.mobberArray.object(at: counter) as? String)!
+        performSegue(withIdentifier: "fullScreenSegue", sender: nextMobber)
+        statusLabel.stringValue = "Next Mobber: \(nextMobber)"
     }
     
     

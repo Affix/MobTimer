@@ -14,9 +14,10 @@ class FullScreenViewController: NSViewController {
     
     @IBOutlet var FullView: NSView!
     
-    let global = Global()
+    var nextMobber: String!
     
     override func viewDidAppear() {
+        //print(nextMobber!)
         let presOptions: NSApplicationPresentationOptions = ([.fullScreen,.autoHideMenuBar])
         let optionsDictionary = [NSFullScreenModeApplicationPresentationOptions :
             NSNumber(value: presOptions.rawValue)]
@@ -25,7 +26,7 @@ class FullScreenViewController: NSViewController {
         self.view.wantsLayer = true
         self.view.layer?.backgroundColor = NSColor.black.cgColor
         
-        message.stringValue = "Hello \(global.nextMobber), time to fly!\nPress any key to continue"
+        message.stringValue = "Hello \(nextMobber!), time to fly!\nPress any key to continue"
     }
     
     override func keyDown(with event: NSEvent) {
