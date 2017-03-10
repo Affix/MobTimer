@@ -41,10 +41,6 @@ class FullScreenViewController: NSViewController {
         FullView.window?.close()
     }
     
-    func performSegue(for segue: NSStoryboardSegue, withIdentifier identifier: String, sender: Any?) {
-        print(identifier)
-        segue.perform()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

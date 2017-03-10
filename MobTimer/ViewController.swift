@@ -38,8 +38,6 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             if state == 0 {
                 timer.invalidate()
                 startTimer()
-                startButton.title = "Stop"
-                state = 1
             } else {
                 timer.invalidate()
                 state = 0
@@ -52,13 +50,6 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         }
     }
     
-    
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        let fullScreenVC = segue.destinationController as! FullScreenViewController
-        let nm = sender as! String
-        fullScreenVC.nextMobber = nm
-    }
-
     @IBAction func addMobber(_ sender: Any) {
         if mobName.stringValue != "" {
             mobberArray.add(mobName.stringValue)
@@ -67,15 +58,39 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         }
     }
     
+    // ViewController Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        mobberTable.delegate = self
+        mobberTable.dataSource = self
+    }
+    
+    override func viewDidDisappear() {
+        exit(0)
+    }
+    
+    // Send data to the FullScreenViewController
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        let fullScreenVC = segue.destinationController as! FullScreenViewController
+        let nm = sender as! String
+        fullScreenVC.nextMobber = nm
+    }
+    
     func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: (TimeInterval(timeInterval.intValue * 60)), target: self, selector: #selector(updateMob), userInfo: nil, repeats: true)
+        startButton.title = "Stop"
+        state = 1
     }
     
     
     func updateMob()
     {
+        // We want to steal focus from others
         NSApp.activate(ignoringOtherApps: true)
         timer.invalidate()
+        // Play the Sound
         let url = Bundle.main.url(forResource: "foghorn", withExtension: "wav")!
         do {
             player = try AVAudioPlayer(contentsOf: url)
@@ -97,21 +112,8 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        mobberTable.delegate = self
-        mobberTable.dataSource = self
-    }
     
-    
-    override func viewDidDisappear() {
-        exit(0)
-    }
-
-    
-   // DELEGATE METHODS
+   // NSTableViewDelegate Methods
 
     func numberOfRows(in tableView: NSTableView) -> Int {
         return self.mobberArray.count
