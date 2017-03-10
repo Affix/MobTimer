@@ -198,7 +198,7 @@
                         <outlet property="startButton" destination="WGR-Ww-gX0" id="YS1-sK-QuW"/>
                         <outlet property="statusLabel" destination="M7q-v9-4ul" id="r9r-UB-m8B"/>
                         <outlet property="timeInterval" destination="PwI-cu-adL" id="VSr-VD-ipw"/>
-                        <segue destination="peM-zn-hzY" kind="popover" identifier="fullScreenSegue" popoverBehavior="t" preferredEdge="maxY" id="jVA-2s-jHW"/>
+                        <segue destination="peM-zn-hzY" kind="show" identifier="fullScreenSegue" id="jVA-2s-jHW"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -230,7 +230,9 @@ Press any Key to continue</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="FullView" destination="MAo-0A-FEG" id="3wd-dT-6Tp"/>
                         <outlet property="message" destination="1cF-AX-qyH" id="TKg-ZW-xdQ"/>
+                        <outlet property="view" destination="MAo-0A-FEG" id="jzO-NZ-4qp"/>
                     </connections>
                 </viewController>
                 <customObject id="XfK-Fe-iUS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
