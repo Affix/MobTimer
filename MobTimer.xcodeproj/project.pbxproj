@@ -13,6 +13,7 @@
 		380248281E71F75000AB3372 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380248271E71F75000AB3372 /* Assets.xcassets */; };
 		3802482B1E71F75000AB3372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380248291E71F75000AB3372 /* Main.storyboard */; };
 		380248361E72B35A00AB3372 /* foghorn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 380248351E72B35A00AB3372 /* foghorn.wav */; };
+		3802483C1E72D3F000AB3372 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3802483B1E72D3F000AB3372 /* FullScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3802482A1E71F75000AB3372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3802482C1E71F75000AB3372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		380248351E72B35A00AB3372 /* foghorn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = foghorn.wav; sourceTree = "<group>"; };
+		3802483B1E72D3F000AB3372 /* FullScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +58,14 @@
 		3802481F1E71F75000AB3372 /* MobTimer */ = {
 			isa = PBXGroup;
 			children = (
-				380248291E71F75000AB3372 /* Main.storyboard */,
 				380248201E71F75000AB3372 /* AppDelegate.swift */,
 				380248221E71F75000AB3372 /* ViewController.swift */,
 				380248271E71F75000AB3372 /* Assets.xcassets */,
 				3802482C1E71F75000AB3372 /* Info.plist */,
 				380248351E72B35A00AB3372 /* foghorn.wav */,
 				380248241E71F75000AB3372 /* MobTimer.xcdatamodeld */,
+				380248291E71F75000AB3372 /* Main.storyboard */,
+				3802483B1E72D3F000AB3372 /* FullScreenViewController.swift */,
 			);
 			path = MobTimer;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 				380248231E71F75000AB3372 /* ViewController.swift in Sources */,
 				380248261E71F75000AB3372 /* MobTimer.xcdatamodeld in Sources */,
 				380248211E71F75000AB3372 /* AppDelegate.swift in Sources */,
+				3802483C1E72D3F000AB3372 /* FullScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

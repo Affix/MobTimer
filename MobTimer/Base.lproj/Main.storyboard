@@ -198,11 +198,44 @@
                         <outlet property="startButton" destination="WGR-Ww-gX0" id="YS1-sK-QuW"/>
                         <outlet property="statusLabel" destination="M7q-v9-4ul" id="r9r-UB-m8B"/>
                         <outlet property="timeInterval" destination="PwI-cu-adL" id="VSr-VD-ipw"/>
+                        <segue destination="peM-zn-hzY" kind="popover" identifier="fullScreenSegue" popoverBehavior="t" preferredEdge="maxY" id="jVA-2s-jHW"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="276.5" y="263"/>
+            <point key="canvasLocation" x="522" y="257"/>
+        </scene>
+        <!--Full Screen View Controller-->
+        <scene sceneID="csM-Sn-oca">
+            <objects>
+                <viewController id="peM-zn-hzY" customClass="FullScreenViewController" customModule="MobTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="MAo-0A-FEG">
+                        <rect key="frame" x="0.0" y="0.0" width="966" height="372"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1cF-AX-qyH">
+                                <rect key="frame" x="140" y="101" width="687" height="170"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="VoA-Po-19R">
+                                    <font key="font" metaFont="system" size="60"/>
+                                    <string key="title">Looks like John is up!,
+Press any Key to continue</string>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="1cF-AX-qyH" firstAttribute="centerX" secondItem="MAo-0A-FEG" secondAttribute="centerX" id="1cp-3h-jfr"/>
+                            <constraint firstItem="1cF-AX-qyH" firstAttribute="centerY" secondItem="MAo-0A-FEG" secondAttribute="centerY" id="PnD-s8-tE9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="message" destination="1cF-AX-qyH" id="TKg-ZW-xdQ"/>
+                    </connections>
+                </viewController>
+                <customObject id="XfK-Fe-iUS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="510" y="805"/>
         </scene>
     </scenes>
 </document>

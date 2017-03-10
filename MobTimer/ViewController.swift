@@ -9,9 +9,13 @@
 import Cocoa
 import AVFoundation
 
+class Global {
+    var nextMobber = String()
+}
+
 class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate {
     
-    
+    let global = Global()
     var timer = Timer()
     var mobberArray: NSMutableArray = []
     var counter = 0
@@ -51,11 +55,18 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         }
     }
     
+    
+    
+    func performSegue(for segue: NSStoryboardSegue, withIdentifier identifier: String, sender: AnyObject?) {
+        segue.perform()
+    }
 
     @IBAction func addMobber(_ sender: Any) {
-        mobberArray.add(mobName.stringValue)
-        mobName.stringValue = ""
-        mobberTable.reloadData()
+        if mobName.stringValue != "" {
+            mobberArray.add(mobName.stringValue)
+            mobName.stringValue = ""
+            mobberTable.reloadData()
+        }
     }
     
     func startTimer() {
@@ -65,6 +76,7 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
     
     func updateMob()
     {
+        NSApp.activate(ignoringOtherApps: true)
         timer.invalidate()
         let url = Bundle.main.url(forResource: "foghorn", withExtension: "wav")!
         do {
@@ -81,9 +93,9 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         if counter >= mobberArray.count {
             counter = 0
         }
-
-        statusLabel.stringValue = "Next Mobber: \(self.mobberArray.object(at: counter))"
-        
+        performSegue(withIdentifier: "fullScreenSegue", sender: nil)
+        global.nextMobber = (self.mobberArray.object(at: counter) as? String)!
+        statusLabel.stringValue = "Next Mobber: \(global.nextMobber)"
     }
     
     
@@ -95,15 +107,10 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         mobberTable.dataSource = self
     }
     
-    /*
-    override func viewDidAppear() {
-        let presOptions: NSApplicationPresentationOptions = ([.fullScreen,.autoHideMenuBar])
-        let optionsDictionary = [NSFullScreenModeApplicationPresentationOptions :
-            NSNumber(value: presOptions.rawValue)]
-        
-        self.view.enterFullScreenMode(NSScreen.main()!, withOptions:optionsDictionary)
-        self.view.wantsLayer = true
-    }*/
+    
+    override func viewDidDisappear() {
+        exit(0)
+    }
 
     
    // DELEGATE METHODS
